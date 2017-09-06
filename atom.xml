@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://fitzz.cn/"/>
-  <updated>2017-09-05T15:42:17.000Z</updated>
+  <updated>2017-09-06T07:21:14.000Z</updated>
   <id>http://fitzz.cn/</id>
   
   <author>
@@ -16,9 +16,99 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>fabric.js的简单上手及基于fabric.js的canvas切图工具：1、基本使用及配置</title>
+    <link href="http://fitzz.cn/2017/09/06/cj78p62h3000063g0x5uvxm21/"/>
+    <id>http://fitzz.cn/2017/09/06/cj78p62h3000063g0x5uvxm21/</id>
+    <published>2017-09-06T05:49:09.000Z</published>
+    <updated>2017-09-06T07:21:14.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><em>参考链接 <a href="https://segmentfault.com/a/1190000004864237" target="_blank" rel="external">Fabric.js 简单介绍和使用</a></em></p>
+<hr>
+<h3 id="简介"><a class="header-anchor" href="#简介">¶</a>简介</h3>
+<blockquote>
+<p>Fabric.js是一个可以简化canvas程序编写的库。 Fabric.js为canvas提供所缺少的对象模型, svg parser, 交互和一整套其他不可或缺的工具。基于MIT协议开源，在github上有许多人贡献代码。</p>
+</blockquote>
+<h3 id="为什么选择fabric-js"><a class="header-anchor" href="#为什么选择fabric-js">¶</a>为什么选择fabric.js</h3>
+<ul>
+<li>手上的项目必须使用canvas</li>
+<li>原生的canvas API不够友好</li>
+<li>用fabric.js实现切图用户体验更好</li>
+<li>为项目以后的迭代留下扩展的余地</li>
+</ul>
+<hr>
+<h3 id="简单上手"><a class="header-anchor" href="#简单上手">¶</a>简单上手</h3>
+<blockquote>
+<p>请参考文章开头的参考链接</p>
+</blockquote>
+<p>这里主要介绍一下为了实现以下目标所需要配置的东西</p>
+<h4 id="终极目标："><a class="header-anchor" href="#终极目标：">¶</a>终极目标：</h4>
+<blockquote>
+<ol>
+<li>加载图片</li>
+<li>鼠标拖动生成切图框</li>
+<li>点击切图后按照原图比例切出图片</li>
+<li>将切出来的图片通过ajax上传至服务器</li>
+</ol>
+</blockquote>
+<h4 id="1-加载图片"><a class="header-anchor" href="#1-加载图片">¶</a>1. 加载图片</h4>
+<ul>
+<li>
+<h5 id="设置一个不可见的canvas并将原尺寸图片绘制上"><a class="header-anchor" href="#设置一个不可见的canvas并将原尺寸图片绘制上">¶</a>设置一个不可见的canvas并将原尺寸图片绘制上</h5>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">let fullImgCv = document.createElement(&apos;canvas&apos;)</div><div class="line">let fullImgCtx = fullImgCv.getContext(&apos;2d&apos;)</div><div class="line">let fullImg = new Image()</div><div class="line">fullImg.src = &apos;***&apos;//your path</div><div class="line">fullImg.crossOrigin = &quot;Anonymous&quot;</div><div class="line">fullImg.onload = function () &#123;</div><div class="line">    fullImgCv.width = fullImg.width</div><div class="line">    fullImgCv.height = fullImg.height</div><div class="line">    fullImgCtx.drawImage(fullImg, 0, 0, fullImg.width, fullImg.height)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>
+<h5 id="加载图片至fabric画布"><a class="header-anchor" href="#加载图片至fabric画布">¶</a>加载图片至fabric画布</h5>
+</li>
+</ul>
+<p>通过背景图片的方式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">let cv = new fabric.Canvas(&apos;cv&apos;)</div><div class="line">let imgScale = 1</div><div class="line">fabric.Image.fromURL(currentImg, function (img) &#123;</div><div class="line">	if (img.width &gt; cv.width) imgScale = cv.width / img.width</div><div class="line">	    img.set(&#123;</div><div class="line">            left: 0,</div><div class="line">            top: 0,</div><div class="line">            scaleX: imgScale,</div><div class="line">            scaleY: imgScale,</div><div class="line">            originX: &apos;left&apos;,</div><div class="line">            originY: &apos;top&apos;</div><div class="line">        &#125;)</div><div class="line">		cv.add(img)</div><div class="line">	&#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>通过fabric图片对象的方式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">let img = new Image()</div><div class="line">img.src = &apos;***&apos;//your path</div><div class="line">img.onload = function () &#123;</div><div class="line">  let _img = new fabric.Image(img)</div><div class="line">  if (_img.width &gt; cv.width) imgScale = cv.width / img.width</div><div class="line">  cv.setBackgroundImage(_img, cv.renderAll.bind(cv), &#123;</div><div class="line">    left: 0,</div><div class="line">    top: 0,</div><div class="line">    scaleX: imgScale,</div><div class="line">    scaleY: imgScale,</div><div class="line">    originX: &apos;left&apos;,</div><div class="line">    originY: &apos;top&apos;</div><div class="line">  &#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>两种方式任选其一，通过fabric图片对象的方式加载易于以后扩展功能（例如背景图片位置的移动）</li>
+<li>这里的 <strong>imgScale</strong> 的作用是为终极目标的第3点服务的，目的是将原尺寸的图片按照给定像素的宽度比例显示在屏幕中（避免横向滚动条），且该缩放比例imgScale也是将切图框映射到原尺寸图片画布的重要数据</li>
+</ul>
+<h4 id="2-鼠标拖动生成切图框"><a class="header-anchor" href="#2-鼠标拖动生成切图框">¶</a>2. 鼠标拖动生成切图框</h4>
+<ul>
+<li>
+<h5 id="解决当拖动时fabric对象也会被拖动"><a class="header-anchor" href="#解决当拖动时fabric对象也会被拖动">¶</a>解决当拖动时fabric对象也会被拖动</h5>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">// 禁止对象被选中</div><div class="line">fabric.Object.prototype.selectable = false</div><div class="line">// 禁止对象被放大、缩小、旋转、移动</div><div class="line">fabric.Object.prototype.lockMovementX = true</div><div class="line">fabric.Object.prototype.lockMovementY = true</div><div class="line">fabric.Object.prototype.lockScalingX  = true</div><div class="line">fabric.Object.prototype.lockScalingY  = true</div><div class="line">fabric.Object.prototype.lockRotation  = true</div></pre></td></tr></table></figure>
+<ul>
+<li>
+<h5 id="通过监听鼠标行为作切图框"><a class="header-anchor" href="#通过监听鼠标行为作切图框">¶</a>通过监听鼠标行为作切图框</h5>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">cv.on(&apos;mouse:down&apos;, function (options) &#123;</div><div class="line">	// 设置变量记录起始位置的坐标</div><div class="line">	//options.e.layerX</div><div class="line">	//options.e.layerY</div><div class="line">&#125;)</div><div class="line">cv.on(&apos;mouse:up&apos;, function (options) &#123;</div><div class="line">	// 设置变量记录结束位置的坐标</div><div class="line">	//options.e.layerX</div><div class="line">	//options.e.layerY</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<ul>
+<li>fabric提供了很多监听的方式，<a href="http://fabricjs.com/events" target="_blank" rel="external">查看更多</a></li>
+<li>值得一提的是当使用fabric.js时，options.e.layerX的坐标在chrome和Firefox上是相同的，而使用原生canvas是不同的，有兴趣的可以去试试</li>
+</ul>
+<h4 id="将切出来的图片通过ajax上传至服务器"><a class="header-anchor" href="#将切出来的图片通过ajax上传至服务器">¶</a>将切出来的图片通过ajax上传至服务器</h4>
+<ol>
+<li>通过getImageData()从canvas得到的是base64编码</li>
+<li>要通过ajax将图片上传至服务器需要将base64转为blob对象</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;em&gt;参考链接 &lt;a href=&quot;https://segmentfault.com/a/1190000004864237&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Fabric.js 简单介绍和使用&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>test_my_site</title>
-    <link href="http://fitzz.cn/2017/09/05/test-my-site/"/>
-    <id>http://fitzz.cn/2017/09/05/test-my-site/</id>
+    <link href="http://fitzz.cn/2017/09/05/cj78p62hd000263g0k8l2z4fs/"/>
+    <id>http://fitzz.cn/2017/09/05/cj78p62hd000263g0k8l2z4fs/</id>
     <published>2017-09-05T15:42:17.000Z</published>
     <updated>2017-09-05T15:42:17.000Z</updated>
     
@@ -31,19 +121,24 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="http://fitzz.cn/2017/09/05/hello-world/"/>
-    <id>http://fitzz.cn/2017/09/05/hello-world/</id>
+    <link href="http://fitzz.cn/2017/09/05/cj78p62h8000163g0sgwz92wi/"/>
+    <id>http://fitzz.cn/2017/09/05/cj78p62h8000163g0sgwz92wi/</id>
     <published>2017-09-05T15:40:14.000Z</published>
     <updated>2017-09-05T15:40:14.000Z</updated>
     
     <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
+<h2 id="quick-start"><a class="header-anchor" href="#quick-start">¶</a>Quick Start</h2>
+<h3 id="create-a-new-post"><a class="header-anchor" href="#create-a-new-post">¶</a>Create a new post</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
+<h3 id="run-server"><a class="header-anchor" href="#run-server">¶</a>Run server</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
+<h3 id="generate-static-files"><a class="header-anchor" href="#generate-static-files">¶</a>Generate static files</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
+<h3 id="deploy-to-remote-sites"><a class="header-anchor" href="#deploy-to-remote-sites">¶</a>Deploy to remote sites</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
 ]]></content>
     
