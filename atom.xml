@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://fitzz.cn/"/>
-  <updated>2017-09-06T07:21:14.000Z</updated>
+  <updated>2017-09-06T12:56:07.000Z</updated>
   <id>http://fitzz.cn/</id>
   
   <author>
@@ -16,19 +16,159 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>关于wordpress设置固定链接后文章出现404的解决办法</title>
+    <link href="http://fitzz.cn/2017/09/06/cj79136pn0005rfg0nb3k32jq/"/>
+    <id>http://fitzz.cn/2017/09/06/cj79136pn0005rfg0nb3k32jq/</id>
+    <published>2017-09-06T12:45:59.000Z</published>
+    <updated>2017-09-06T12:56:07.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>首先说明一下环境：ubuntu16.04，apache2，php7</p>
+</blockquote>
+<a id="more"></a>
+<h3 id="网上搜索一圈方法后-总结如下："><a class="header-anchor" href="#网上搜索一圈方法后-总结如下："></a>网上搜索一圈方法后，总结如下：</h3>
+<blockquote>
+<p>原因：apache2未开启rewrite mod 可执行如下命令</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo a2enmod rewrite</div></pre></td></tr></table></figure>
+<h5 id="把-directory-var-www-里面的-allowoverride-none-改为-allowoverride-all"><a class="header-anchor" href="#把-directory-var-www-里面的-allowoverride-none-改为-allowoverride-all"></a>把&lt;Directory /var/www/&gt;里面的 AllowOverride None 改为 AllowOverride All</h5>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vim /etc/apache2/apache2.conf // 把&lt;Directory /var/www/&gt;里面的 AllowOverride None 改为 AllowOverride All</div></pre></td></tr></table></figure>
+<p>此时在wordpress根目录中会有 .htaccess文件，之后修改为 RewriteEngine On</p>
+<p>此时就完成配置了</p>
+<p>其中我遇到了坑，第一次a2enmod后，照着网上的方法所有的都配置好了，但是还是404，折腾无果加上天色已晚就睡了，第二天又在网上搜索方法，发现还是前一天的方法还靠谱点（也就是如上的方法），就照着又试了一遍，最终竟然成功了。。。</p>
+<p>照我的理解，应该是要先将apache2.conf中的AllowOverride改为All，之后再a2enmod，然后restart apache2，应该就可以了</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;首先说明一下环境：ubuntu16.04，apache2，php7&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Mac osX下brew、node、npm的安装以及外接显示器发虚的配置</title>
+    <link href="http://fitzz.cn/2017/09/06/cj79136ov0002rfg0czfbve7q/"/>
+    <id>http://fitzz.cn/2017/09/06/cj79136ov0002rfg0czfbve7q/</id>
+    <published>2017-09-06T12:42:06.000Z</published>
+    <updated>2017-09-06T12:44:40.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1>针对开发者的osX环境搭建</h1>
+<p><em>新买的mac趁着兴奋劲使劲折腾</em></p>
+<h3 id="1-首先-brew-的安装"><a class="header-anchor" href="#1-首先-brew-的安装"></a>1. 首先 brew 的安装</h3>
+<p>之前用惯了Ubuntu，甚是觉得有apt-get这种东西来帮忙管理依赖真是爽爆了，拿到mac第一件事便是搜索有没有类似的东西，果不其然，brew就这样出现了<br>
+<a href="https://brew.sh/index_zh-cn.html" title="brew官网" target="_blank" rel="external">brew官网</a> 最新内容可从官网获取<br>
+安装方式很简单，按照官网的教程来就可以，具体如下：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/usr/bin/ruby -e <span class="string">"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"</span></div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">brew install wget</div></pre></td></tr></table></figure>
+<h3 id="2-安装node以及npm"><a class="header-anchor" href="#2-安装node以及npm"></a>2.安装node以及npm</h3>
+<p>前端开发当然离不开node和npm了，有了brew，安装方法也非常简单</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">brew install node</div></pre></td></tr></table></figure>
+<p>然后可以通过命令查看是否安装成功</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">node --version</div><div class="line">npm --version</div></pre></td></tr></table></figure>
+<img src="http://www.fitzz.cn/wp-content/uploads/2017/03/QQ20170308-140428@2x.png" alt="" width="988" height="400" class="alignnone size-full wp-image-45">
+成功结果如上
+<h3 id="3-外接显示器-非高分屏-发虚的解决方法"><a class="header-anchor" href="#3-外接显示器-非高分屏-发虚的解决方法"></a>3.外接显示器（非高分屏）发虚的解决方法</h3>
+<p>转自简书：<a href="http://www.jianshu.com/p/6274253b78d8" title="可能是目前解决Mac外接显示器字体发虚的最好方法" target="_blank" rel="external">可能是目前解决Mac外接显示器字体发虚的最好方法</a><br>
+原因是mac讲显示器识别为TV，按照tv来来渲染导致的，如图（Television 为 yes）<br>
+<img src="http://www.fitzz.cn/wp-content/uploads/2017/03/434166-99cdb44da7d88d8b.jpg" alt="" width="1176" height="1024" class="alignnone size-full wp-image-48"><br>
+修改方法为：<br>
+3.1  下载 <a href="https://gist.github.com/adaugherity/7435890" title="patch-edid.rb" target="_blank" rel="external">patch-edid.rb</a>这个文件到 mac 的Download 文件夹中。</p>
+<p>I. 打开终端，</p>
+<p>位置：Application - Terminal</p>
+<p>输入两行命令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cd Downloads （严格区分大小写）</div></pre></td></tr></table></figure>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ruby patch-edid.rb</div></pre></td></tr></table></figure>
+<p>运行patch-edid.rb脚本后，会产生一个DisplayVendorID-1xxx文件，xxx是编号，每台机器都有区别。</p>
+<p>II. 关闭 rootless 功能:</p>
+<p>关机后，按住 「command + R字母」后开机，中间的苹果标志及进度条出现后放开按键，等待恢复安装界<br>
+面和 “OS X 实用工具” 窗口出现后，点击顶部菜单栏的 “实用工具”，在其下拉菜单点选运行 “终端”，<br>
+<img src="http://www.fitzz.cn/wp-content/uploads/2017/03/434166-ea52a2ec38eab550.jpg" alt="" width="327" height="207" class="alignnone size-full wp-image-49"><br>
+在终端闪动字符的位置直接输入“csrutil disable” 并回车，重新启动电脑。<br>
+<img src="http://www.fitzz.cn/wp-content/uploads/2017/03/434166-5756c4b8a541c6af.jpg" alt="" width="670" height="240" class="alignnone size-full wp-image-50"><br>
+III. 关闭 rootless 后就有权限拷贝文件到系统文件夹了。</p>
+<p>把第 I 步生成的「DisplayVendorID-1xxx」文件夹拷到<br>
+/System/Library/Displays/Contents/Resources/Overrides下。</p>
+<p>IV, 重新插拔数据线， 显示效果正常了，设置完毕。<img src="http://www.fitzz.cn/wp-content/uploads/2017/03/434166-b62d974a84a02804.jpg" alt="" width="780" height="524" class="alignnone size-full wp-image-51"><br>
+此时已经没有Television ： yes 了<br>
+然后选择颜色方案，完成</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1&gt;针对开发者的osX环境搭建&lt;/h1&gt;
+&lt;p&gt;&lt;em&gt;新买的mac趁着兴奋劲使劲折腾&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id=&quot;1-首先-brew-的安装&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#1-首先-brew-的安装&quot;&gt;&lt;/a&gt;1. 首先 brew 
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>关于Javascript中this的指向以及一些应用</title>
+    <link href="http://fitzz.cn/2017/09/06/cj79136ow0003rfg0iy8weqjo/"/>
+    <id>http://fitzz.cn/2017/09/06/cj79136ow0003rfg0iy8weqjo/</id>
+    <published>2017-09-06T12:34:35.000Z</published>
+    <updated>2017-09-06T12:37:23.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="关于javascript中this的指向以及一些应用"><a class="header-anchor" href="#关于javascript中this的指向以及一些应用"></a>关于Javascript中this的指向以及一些应用</h2>
+<blockquote>
+<p>本文中大部分观点来自 <a href="http://www.cnblogs.com/pssp/p/5216085.html" target="_blank" rel="external">彻底理解js中this的指向，不必硬背</a> 非常感谢作者</p>
+</blockquote>
+<h4 id="1-关于this最重要的几个结论"><a class="header-anchor" href="#1-关于this最重要的几个结论"></a>1. 关于this最重要的几个结论</h4>
+<blockquote>
+<p>情况1：如果一个函数中有this，但是它没有被上一级的对象所调用，那么this指向的就是window，这里需要说明的是在js的严格版中this指向的不是window，但是我们这里不探讨严格版的问题，你想了解可以自行上网查找。</p>
+</blockquote>
+<blockquote>
+<p>情况2：如果一个函数中有this，这个函数有被上一级的对象所调用，那么this指向的就是上一级的对象。</p>
+</blockquote>
+<blockquote>
+<p>情况3：如果一个函数中有this，这个函数中包含多个对象，尽管这个函数是被最外层的对象所调用，this指向的也只是它上一级的对象</p>
+</blockquote>
+<blockquote>
+<p>情况4：如果return一个对象，则this指向该对象</p>
+</blockquote>
+<p>具体的代码示例请看原文</p>
+<h4 id="2-关于this的应用"><a class="header-anchor" href="#2-关于this的应用"></a>2. 关于this的应用</h4>
+<ul>
+<li>链式调用</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Util</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">this</span>.chain = <span class="function"><span class="keyword">function</span> (<span class="params">a</span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.tem = a</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span></div><div class="line">  &#125;</div><div class="line">  <span class="keyword">this</span>.sum = <span class="function"><span class="keyword">function</span> (<span class="params">b</span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.tem += b</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span></div><div class="line">  &#125;</div><div class="line">  <span class="keyword">this</span>.sub = <span class="function"><span class="keyword">function</span> (<span class="params">c</span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.tem -= c</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span></div><div class="line">  &#125;</div><div class="line">  <span class="keyword">this</span>.value = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">const</span> tem = <span class="keyword">this</span>.tem</div><div class="line">    <span class="keyword">this</span>.tem = <span class="literal">undefined</span></div><div class="line">    <span class="keyword">return</span> tem</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> u = <span class="keyword">new</span> Util()</div><div class="line"><span class="built_in">console</span>.log(u.chain(<span class="number">1</span>).sum(<span class="number">2</span>).sum(<span class="number">3</span>).sub(<span class="number">4</span>).value()) <span class="comment">//2</span></div></pre></td></tr></table></figure>
+<ul>
+<li>如上情况3，如果一个函数中有this，这个函数中包含多个对象，尽管这个函数是被最外层的对象所调用，this指向的也只是它上一级的对象</li>
+<li>所以若要实现链式调用，就必须保证每次调用的方法都指向Util，此时只需在方法中return this就能实现，因为value的this指向sub，而sub的this指向第二个sum。。。以此类推，最终都指向的u，即一个Util实例（new 运算符会创建一个空对象，并讲Util的属性和方法都复制一份，最终赋值给u），这就实现了链式调用</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;关于javascript中this的指向以及一些应用&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#关于javascript中this的指向以及一些应用&quot;&gt;&lt;/a&gt;关于Javascript中this的指向以及一些应用&lt;/h2&gt;
+&lt;blockqu
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>fabric.js的简单上手及基于fabric.js的canvas切图工具：1、基本使用及配置</title>
-    <link href="http://fitzz.cn/2017/09/06/cj78p62h3000063g0x5uvxm21/"/>
-    <id>http://fitzz.cn/2017/09/06/cj78p62h3000063g0x5uvxm21/</id>
+    <link href="http://fitzz.cn/2017/09/06/cj79136ol0000rfg0yj5ep469/"/>
+    <id>http://fitzz.cn/2017/09/06/cj79136ol0000rfg0yj5ep469/</id>
     <published>2017-09-06T05:49:09.000Z</published>
-    <updated>2017-09-06T07:21:14.000Z</updated>
+    <updated>2017-09-06T12:39:50.000Z</updated>
     
     <content type="html"><![CDATA[<p><em>参考链接 <a href="https://segmentfault.com/a/1190000004864237" target="_blank" rel="external">Fabric.js 简单介绍和使用</a></em></p>
 <hr>
-<h3 id="简介"><a class="header-anchor" href="#简介">¶</a>简介</h3>
+<h3 id="简介"><a class="header-anchor" href="#简介"></a>简介</h3>
 <blockquote>
 <p>Fabric.js是一个可以简化canvas程序编写的库。 Fabric.js为canvas提供所缺少的对象模型, svg parser, 交互和一整套其他不可或缺的工具。基于MIT协议开源，在github上有许多人贡献代码。</p>
 </blockquote>
-<h3 id="为什么选择fabric-js"><a class="header-anchor" href="#为什么选择fabric-js">¶</a>为什么选择fabric.js</h3>
+<h3 id="为什么选择fabric-js"><a class="header-anchor" href="#为什么选择fabric-js"></a>为什么选择fabric.js</h3>
 <ul>
 <li>手上的项目必须使用canvas</li>
 <li>原生的canvas API不够友好</li>
@@ -36,12 +176,12 @@
 <li>为项目以后的迭代留下扩展的余地</li>
 </ul>
 <hr>
-<h3 id="简单上手"><a class="header-anchor" href="#简单上手">¶</a>简单上手</h3>
+<h3 id="简单上手"><a class="header-anchor" href="#简单上手"></a>简单上手</h3>
 <blockquote>
 <p>请参考文章开头的参考链接</p>
 </blockquote>
 <p>这里主要介绍一下为了实现以下目标所需要配置的东西</p>
-<h4 id="终极目标："><a class="header-anchor" href="#终极目标：">¶</a>终极目标：</h4>
+<h4 id="终极目标："><a class="header-anchor" href="#终极目标："></a>终极目标：</h4>
 <blockquote>
 <ol>
 <li>加载图片</li>
@@ -50,16 +190,16 @@
 <li>将切出来的图片通过ajax上传至服务器</li>
 </ol>
 </blockquote>
-<h4 id="1-加载图片"><a class="header-anchor" href="#1-加载图片">¶</a>1. 加载图片</h4>
+<h4 id="1-加载图片"><a class="header-anchor" href="#1-加载图片"></a>1. 加载图片</h4>
 <ul>
 <li>
-<h5 id="设置一个不可见的canvas并将原尺寸图片绘制上"><a class="header-anchor" href="#设置一个不可见的canvas并将原尺寸图片绘制上">¶</a>设置一个不可见的canvas并将原尺寸图片绘制上</h5>
+<h5 id="设置一个不可见的canvas并将原尺寸图片绘制上"><a class="header-anchor" href="#设置一个不可见的canvas并将原尺寸图片绘制上"></a>设置一个不可见的canvas并将原尺寸图片绘制上</h5>
 </li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">let fullImgCv = document.createElement(&apos;canvas&apos;)</div><div class="line">let fullImgCtx = fullImgCv.getContext(&apos;2d&apos;)</div><div class="line">let fullImg = new Image()</div><div class="line">fullImg.src = &apos;***&apos;//your path</div><div class="line">fullImg.crossOrigin = &quot;Anonymous&quot;</div><div class="line">fullImg.onload = function () &#123;</div><div class="line">    fullImgCv.width = fullImg.width</div><div class="line">    fullImgCv.height = fullImg.height</div><div class="line">    fullImgCtx.drawImage(fullImg, 0, 0, fullImg.width, fullImg.height)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <ul>
 <li>
-<h5 id="加载图片至fabric画布"><a class="header-anchor" href="#加载图片至fabric画布">¶</a>加载图片至fabric画布</h5>
+<h5 id="加载图片至fabric画布"><a class="header-anchor" href="#加载图片至fabric画布"></a>加载图片至fabric画布</h5>
 </li>
 </ul>
 <p>通过背景图片的方式</p>
@@ -70,24 +210,30 @@
 <li>两种方式任选其一，通过fabric图片对象的方式加载易于以后扩展功能（例如背景图片位置的移动）</li>
 <li>这里的 <strong>imgScale</strong> 的作用是为终极目标的第3点服务的，目的是将原尺寸的图片按照给定像素的宽度比例显示在屏幕中（避免横向滚动条），且该缩放比例imgScale也是将切图框映射到原尺寸图片画布的重要数据</li>
 </ul>
-<h4 id="2-鼠标拖动生成切图框"><a class="header-anchor" href="#2-鼠标拖动生成切图框">¶</a>2. 鼠标拖动生成切图框</h4>
+<h4 id="2-鼠标拖动生成切图框"><a class="header-anchor" href="#2-鼠标拖动生成切图框"></a>2. 鼠标拖动生成切图框</h4>
 <ul>
 <li>
-<h5 id="解决当拖动时fabric对象也会被拖动"><a class="header-anchor" href="#解决当拖动时fabric对象也会被拖动">¶</a>解决当拖动时fabric对象也会被拖动</h5>
+<h5 id="解决当拖动时fabric对象也会被拖动"><a class="header-anchor" href="#解决当拖动时fabric对象也会被拖动"></a>解决当拖动时fabric对象也会被拖动</h5>
 </li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">// 禁止对象被选中</div><div class="line">fabric.Object.prototype.selectable = false</div><div class="line">// 禁止对象被放大、缩小、旋转、移动</div><div class="line">fabric.Object.prototype.lockMovementX = true</div><div class="line">fabric.Object.prototype.lockMovementY = true</div><div class="line">fabric.Object.prototype.lockScalingX  = true</div><div class="line">fabric.Object.prototype.lockScalingY  = true</div><div class="line">fabric.Object.prototype.lockRotation  = true</div></pre></td></tr></table></figure>
 <ul>
 <li>
-<h5 id="通过监听鼠标行为作切图框"><a class="header-anchor" href="#通过监听鼠标行为作切图框">¶</a>通过监听鼠标行为作切图框</h5>
+<h5 id="通过监听鼠标行为作切图框"><a class="header-anchor" href="#通过监听鼠标行为作切图框"></a>通过监听鼠标行为作切图框</h5>
 </li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">cv.on(&apos;mouse:down&apos;, function (options) &#123;</div><div class="line">	// 设置变量记录起始位置的坐标</div><div class="line">	//options.e.layerX</div><div class="line">	//options.e.layerY</div><div class="line">&#125;)</div><div class="line">cv.on(&apos;mouse:up&apos;, function (options) &#123;</div><div class="line">	// 设置变量记录结束位置的坐标</div><div class="line">	//options.e.layerX</div><div class="line">	//options.e.layerY</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
 <ul>
-<li>fabric提供了很多监听的方式，<a href="http://fabricjs.com/events" target="_blank" rel="external">查看更多</a></li>
-<li>值得一提的是当使用fabric.js时，options.e.layerX的坐标在chrome和Firefox上是相同的，而使用原生canvas是不同的，有兴趣的可以去试试</li>
+<li>
+<p>fabric提供了很多监听的方式，<a href="http://fabricjs.com/events" target="_blank" rel="external">查看更多</a></p>
+</li>
+<li>
+<p>值得一提的是当使用fabric.js时，options.e.layerX的坐标在chrome和Firefox上是相同的，而使用原生canvas是不同的，有兴趣的可以去试试</p>
+</li>
+<li>
+<p>将切出来的图片通过ajax上传至服务器</p>
+</li>
 </ul>
-<h4 id="将切出来的图片通过ajax上传至服务器"><a class="header-anchor" href="#将切出来的图片通过ajax上传至服务器">¶</a>将切出来的图片通过ajax上传至服务器</h4>
 <ol>
 <li>通过getImageData()从canvas得到的是base64编码</li>
 <li>要通过ajax将图片上传至服务器需要将base64转为blob对象</li>
@@ -107,8 +253,8 @@
   
   <entry>
     <title>test_my_site</title>
-    <link href="http://fitzz.cn/2017/09/05/cj78p62hd000263g0k8l2z4fs/"/>
-    <id>http://fitzz.cn/2017/09/05/cj78p62hd000263g0k8l2z4fs/</id>
+    <link href="http://fitzz.cn/2017/09/05/cj79136or0001rfg0cxlk418t/"/>
+    <id>http://fitzz.cn/2017/09/05/cj79136or0001rfg0cxlk418t/</id>
     <published>2017-09-05T15:42:17.000Z</published>
     <updated>2017-09-05T15:42:17.000Z</updated>
     
@@ -121,23 +267,23 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="http://fitzz.cn/2017/09/05/cj78p62h8000163g0sgwz92wi/"/>
-    <id>http://fitzz.cn/2017/09/05/cj78p62h8000163g0sgwz92wi/</id>
+    <link href="http://fitzz.cn/2017/09/05/cj79136oz0004rfg0gdgpbvo5/"/>
+    <id>http://fitzz.cn/2017/09/05/cj79136oz0004rfg0gdgpbvo5/</id>
     <published>2017-09-05T15:40:14.000Z</published>
     <updated>2017-09-05T15:40:14.000Z</updated>
     
     <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="quick-start"><a class="header-anchor" href="#quick-start">¶</a>Quick Start</h2>
-<h3 id="create-a-new-post"><a class="header-anchor" href="#create-a-new-post">¶</a>Create a new post</h3>
+<h2 id="quick-start"><a class="header-anchor" href="#quick-start"></a>Quick Start</h2>
+<h3 id="create-a-new-post"><a class="header-anchor" href="#create-a-new-post"></a>Create a new post</h3>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="run-server"><a class="header-anchor" href="#run-server">¶</a>Run server</h3>
+<h3 id="run-server"><a class="header-anchor" href="#run-server"></a>Run server</h3>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="generate-static-files"><a class="header-anchor" href="#generate-static-files">¶</a>Generate static files</h3>
+<h3 id="generate-static-files"><a class="header-anchor" href="#generate-static-files"></a>Generate static files</h3>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="deploy-to-remote-sites"><a class="header-anchor" href="#deploy-to-remote-sites">¶</a>Deploy to remote sites</h3>
+<h3 id="deploy-to-remote-sites"><a class="header-anchor" href="#deploy-to-remote-sites"></a>Deploy to remote sites</h3>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
 ]]></content>
