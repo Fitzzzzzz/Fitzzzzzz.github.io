@@ -17,8 +17,8 @@
   
   <entry>
     <title>关于wordpress设置固定链接后文章出现404的解决办法</title>
-    <link href="http://fitzz.cn/2017/09/06/cj79136pn0005rfg0nb3k32jq/"/>
-    <id>http://fitzz.cn/2017/09/06/cj79136pn0005rfg0nb3k32jq/</id>
+    <link href="http://fitzz.cn/2017/09/06/cj7fx863p00049qg036syvcz7/"/>
+    <id>http://fitzz.cn/2017/09/06/cj7fx863p00049qg036syvcz7/</id>
     <published>2017-09-06T12:45:59.000Z</published>
     <updated>2017-09-06T12:56:07.000Z</updated>
     
@@ -52,8 +52,8 @@
   
   <entry>
     <title>Mac osX下brew、node、npm的安装以及外接显示器发虚的配置</title>
-    <link href="http://fitzz.cn/2017/09/06/cj79136ov0002rfg0czfbve7q/"/>
-    <id>http://fitzz.cn/2017/09/06/cj79136ov0002rfg0czfbve7q/</id>
+    <link href="http://fitzz.cn/2017/09/06/cj7fx863d00009qg0f4fj6d6b/"/>
+    <id>http://fitzz.cn/2017/09/06/cj7fx863d00009qg0f4fj6d6b/</id>
     <published>2017-09-06T12:42:06.000Z</published>
     <updated>2017-09-06T12:44:40.000Z</updated>
     
@@ -111,8 +111,8 @@ III. 关闭 rootless 后就有权限拷贝文件到系统文件夹了。</p>
   
   <entry>
     <title>关于Javascript中this的指向以及一些应用</title>
-    <link href="http://fitzz.cn/2017/09/06/cj79136ow0003rfg0iy8weqjo/"/>
-    <id>http://fitzz.cn/2017/09/06/cj79136ow0003rfg0iy8weqjo/</id>
+    <link href="http://fitzz.cn/2017/09/06/cj7fx863m00029qg0r5c8l7sc/"/>
+    <id>http://fitzz.cn/2017/09/06/cj7fx863m00029qg0r5c8l7sc/</id>
     <published>2017-09-06T12:34:35.000Z</published>
     <updated>2017-09-06T12:37:23.000Z</updated>
     
@@ -157,8 +157,8 @@ III. 关闭 rootless 后就有权限拷贝文件到系统文件夹了。</p>
   
   <entry>
     <title>fabric.js的简单上手及基于fabric.js的canvas切图工具：1、基本使用及配置</title>
-    <link href="http://fitzz.cn/2017/09/06/cj79136ol0000rfg0yj5ep469/"/>
-    <id>http://fitzz.cn/2017/09/06/cj79136ol0000rfg0yj5ep469/</id>
+    <link href="http://fitzz.cn/2017/09/06/cj7fx863n00039qg04vh9tep7/"/>
+    <id>http://fitzz.cn/2017/09/06/cj7fx863n00039qg04vh9tep7/</id>
     <published>2017-09-06T05:49:09.000Z</published>
     <updated>2017-09-06T12:39:50.000Z</updated>
     
@@ -252,23 +252,9 @@ III. 关闭 rootless 后就有权限拷贝文件到系统文件夹了。</p>
   </entry>
   
   <entry>
-    <title>test_my_site</title>
-    <link href="http://fitzz.cn/2017/09/05/cj79136or0001rfg0cxlk418t/"/>
-    <id>http://fitzz.cn/2017/09/05/cj79136or0001rfg0cxlk418t/</id>
-    <published>2017-09-05T15:42:17.000Z</published>
-    <updated>2017-09-05T15:42:17.000Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
     <title>Hello World</title>
-    <link href="http://fitzz.cn/2017/09/05/cj79136oz0004rfg0gdgpbvo5/"/>
-    <id>http://fitzz.cn/2017/09/05/cj79136oz0004rfg0gdgpbvo5/</id>
+    <link href="http://fitzz.cn/2017/09/05/cj7fx863j00019qg06339hqcf/"/>
+    <id>http://fitzz.cn/2017/09/05/cj7fx863j00019qg06339hqcf/</id>
     <published>2017-09-05T15:40:14.000Z</published>
     <updated>2017-09-05T15:40:14.000Z</updated>
     

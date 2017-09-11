@@ -12,7 +12,7 @@
     
     <title>
         
-            fabric.js的简单上手及基于fabric.js的canvas切图工具：1、基本使用及配置 | 
+            关于wordpress设置固定链接后文章出现404的解决办法 | 
         
         FitzzBlog
     </title>
@@ -35,7 +35,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <meta name="theme-color" content="#0097A7">
     <meta name="author" content="Fitzz Wang">
-    <meta name="description" itemprop="description" content="">
+    <meta name="description" itemprop="description" content="
+首先说明一下环境：ubuntu16.04，apache2，php7
+">
     <meta name="keywords" content="">
 
     <!-- Site Verification -->
@@ -65,9 +67,11 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://fitzz.cn">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="fabric.js的简单上手及基于fabric.js的canvas切图工具：1、基本使用及配置 | FitzzBlog">
+    <meta property="og:title" content="关于wordpress设置固定链接后文章出现404的解决办法 | FitzzBlog">
     <meta property="og:image" content="/img/favicon.png" />
-    <meta property="og:description" content="">
+    <meta property="og:description" content="
+首先说明一下环境：ubuntu16.04，apache2，php7
+">
     
 
     
@@ -76,15 +80,17 @@
     
 
     <!-- The Twitter Card protocol -->
-    <meta name="twitter:title" content="fabric.js的简单上手及基于fabric.js的canvas切图工具：1、基本使用及配置 | FitzzBlog">
-    <meta name="twitter:description" content="">
+    <meta name="twitter:title" content="关于wordpress设置固定链接后文章出现404的解决办法 | FitzzBlog">
+    <meta name="twitter:description" content="
+首先说明一下环境：ubuntu16.04，apache2，php7
+">
     <meta name="twitter:image" content="/img/favicon.png">
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content="http://fitzz.cn" />
 
     <!-- Add canonical link for SEO -->
     
-        <link rel="canonical" href="http://fitzz.cn/2017/09/06/cj79136ol0000rfg0yj5ep469/index.html" />
+        <link rel="canonical" href="http://fitzz.cn/2017/09/06/cj7fx863p00049qg036syvcz7/index.html" />
     
 
     <!-- Structured-data for SEO -->
@@ -110,11 +116,13 @@
         },
         "description": "Hi, nice to meet you"
     },
-    "headline": "fabric.js的简单上手及基于fabric.js的canvas切图工具：1、基本使用及配置",
-    "url": "http://fitzz.cn/2017/09/06/cj79136ol0000rfg0yj5ep469/index.html",
+    "headline": "关于wordpress设置固定链接后文章出现404的解决办法",
+    "url": "http://fitzz.cn/2017/09/06/cj7fx863p00049qg036syvcz7/index.html",
     "datePublished": "9月 06, 2017",
     "dateModified": "9月 06, 2017",
-    "description": "",
+    "description": "
+首先说明一下环境：ubuntu16.04，apache2，php7
+",
     "mainEntityOfPage": {
         "@type": "WebPage",
         "@id": "http://fitzz.cn"
@@ -331,7 +339,7 @@
 
     
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#简介"><span class="post-toc-number">1.</span> <span class="post-toc-text">简介</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#为什么选择fabric-js"><span class="post-toc-number">2.</span> <span class="post-toc-text">为什么选择fabric.js</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#简单上手"><span class="post-toc-number">3.</span> <span class="post-toc-text">简单上手</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#终极目标："><span class="post-toc-number">3.1.</span> <span class="post-toc-text">终极目标：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-加载图片"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">1. 加载图片</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#设置一个不可见的canvas并将原尺寸图片绘制上"><span class="post-toc-number">3.2.1.</span> <span class="post-toc-text">设置一个不可见的canvas并将原尺寸图片绘制上</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#加载图片至fabric画布"><span class="post-toc-number">3.2.2.</span> <span class="post-toc-text">加载图片至fabric画布</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-鼠标拖动生成切图框"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">2. 鼠标拖动生成切图框</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#解决当拖动时fabric对象也会被拖动"><span class="post-toc-number">3.3.1.</span> <span class="post-toc-text">解决当拖动时fabric对象也会被拖动</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#通过监听鼠标行为作切图框"><span class="post-toc-number">3.3.2.</span> <span class="post-toc-text">通过监听鼠标行为作切图框</span></a></li></ol></li></ol></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#网上搜索一圈方法后-总结如下："><span class="post-toc-number">1.</span> <span class="post-toc-text">网上搜索一圈方法后，总结如下：</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#把-directory-var-www-里面的-allowoverride-none-改为-allowoverride-all"><span class="post-toc-number">1.0.1.</span> <span class="post-toc-text">把<Directory /var/www/>里面的 AllowOverride None 改为 AllowOverride All</span></a></li></ol></li></ol></li></ol>
         <!--
         <li class="mdl-menu__item">
             Some Action
@@ -369,7 +377,7 @@
         
     
             <p class="article-headline-p">
-                fabric.js的简单上手及基于fabric.js的canvas切图工具：1、基本使用及配置
+                关于wordpress设置固定链接后文章出现404的解决办法
             </p>
         </div>
 
@@ -428,7 +436,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=fabric.js的简单上手及基于fabric.js的canvas切图工具：1、基本使用及配置&url=http://fitzz.cn/2017/09/06/cj79136ol0000rfg0yj5ep469/index.html&pic=&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=关于wordpress设置固定链接后文章出现404的解决办法&url=http://fitzz.cn/2017/09/06/cj7fx863p00049qg036syvcz7/index.html&pic=&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -437,7 +445,7 @@
 
     <!-- Share Twitter -->
     
-        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=fabric.js的简单上手及基于fabric.js的canvas切图工具：1、基本使用及配置&url=http://fitzz.cn/2017/09/06/cj79136ol0000rfg0yj5ep469/index.html&via=Fitzz Wang" target="_blank">
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=关于wordpress设置固定链接后文章出现404的解决办法&url=http://fitzz.cn/2017/09/06/cj7fx863p00049qg036syvcz7/index.html&via=Fitzz Wang" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Twitter
             </li>
@@ -446,7 +454,7 @@
 
     <!-- Share Facebook -->
     
-        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://fitzz.cn/2017/09/06/cj79136ol0000rfg0yj5ep469/index.html" target="_blank">
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://fitzz.cn/2017/09/06/cj7fx863p00049qg036syvcz7/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Facebook
             </li>
@@ -455,7 +463,7 @@
 
     <!-- Share Google+ -->
     
-        <a class="post_share-link" href="https://plus.google.com/share?url=http://fitzz.cn/2017/09/06/cj79136ol0000rfg0yj5ep469/index.html" target="_blank">
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://fitzz.cn/2017/09/06/cj7fx863p00049qg036syvcz7/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Google+
             </li>
@@ -479,82 +487,21 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <p><em>参考链接 <a href="https://segmentfault.com/a/1190000004864237" target="_blank" rel="external">Fabric.js 简单介绍和使用</a></em></p>
-<hr>
-<h3 id="简介"><a class="header-anchor" href="#简介"></a>简介</h3>
-<blockquote>
-<p>Fabric.js是一个可以简化canvas程序编写的库。 Fabric.js为canvas提供所缺少的对象模型, svg parser, 交互和一整套其他不可或缺的工具。基于MIT协议开源，在github上有许多人贡献代码。</p>
+        <blockquote>
+<p>首先说明一下环境：ubuntu16.04，apache2，php7</p>
 </blockquote>
-<h3 id="为什么选择fabric-js"><a class="header-anchor" href="#为什么选择fabric-js"></a>为什么选择fabric.js</h3>
-<ul>
-<li>手上的项目必须使用canvas</li>
-<li>原生的canvas API不够友好</li>
-<li>用fabric.js实现切图用户体验更好</li>
-<li>为项目以后的迭代留下扩展的余地</li>
-</ul>
-<hr>
-<h3 id="简单上手"><a class="header-anchor" href="#简单上手"></a>简单上手</h3>
+<a id="more"></a>
+<h3 id="网上搜索一圈方法后-总结如下："><a class="header-anchor" href="#网上搜索一圈方法后-总结如下："></a>网上搜索一圈方法后，总结如下：</h3>
 <blockquote>
-<p>请参考文章开头的参考链接</p>
+<p>原因：apache2未开启rewrite mod 可执行如下命令</p>
 </blockquote>
-<p>这里主要介绍一下为了实现以下目标所需要配置的东西</p>
-<h4 id="终极目标："><a class="header-anchor" href="#终极目标："></a>终极目标：</h4>
-<blockquote>
-<ol>
-<li>加载图片</li>
-<li>鼠标拖动生成切图框</li>
-<li>点击切图后按照原图比例切出图片</li>
-<li>将切出来的图片通过ajax上传至服务器</li>
-</ol>
-</blockquote>
-<h4 id="1-加载图片"><a class="header-anchor" href="#1-加载图片"></a>1. 加载图片</h4>
-<ul>
-<li>
-<h5 id="设置一个不可见的canvas并将原尺寸图片绘制上"><a class="header-anchor" href="#设置一个不可见的canvas并将原尺寸图片绘制上"></a>设置一个不可见的canvas并将原尺寸图片绘制上</h5>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">let fullImgCv = document.createElement(&apos;canvas&apos;)</div><div class="line">let fullImgCtx = fullImgCv.getContext(&apos;2d&apos;)</div><div class="line">let fullImg = new Image()</div><div class="line">fullImg.src = &apos;***&apos;//your path</div><div class="line">fullImg.crossOrigin = &quot;Anonymous&quot;</div><div class="line">fullImg.onload = function () &#123;</div><div class="line">    fullImgCv.width = fullImg.width</div><div class="line">    fullImgCv.height = fullImg.height</div><div class="line">    fullImgCtx.drawImage(fullImg, 0, 0, fullImg.width, fullImg.height)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>
-<h5 id="加载图片至fabric画布"><a class="header-anchor" href="#加载图片至fabric画布"></a>加载图片至fabric画布</h5>
-</li>
-</ul>
-<p>通过背景图片的方式</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">let cv = new fabric.Canvas(&apos;cv&apos;)</div><div class="line">let imgScale = 1</div><div class="line">fabric.Image.fromURL(currentImg, function (img) &#123;</div><div class="line">	if (img.width &gt; cv.width) imgScale = cv.width / img.width</div><div class="line">	    img.set(&#123;</div><div class="line">            left: 0,</div><div class="line">            top: 0,</div><div class="line">            scaleX: imgScale,</div><div class="line">            scaleY: imgScale,</div><div class="line">            originX: &apos;left&apos;,</div><div class="line">            originY: &apos;top&apos;</div><div class="line">        &#125;)</div><div class="line">		cv.add(img)</div><div class="line">	&#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>通过fabric图片对象的方式</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">let img = new Image()</div><div class="line">img.src = &apos;***&apos;//your path</div><div class="line">img.onload = function () &#123;</div><div class="line">  let _img = new fabric.Image(img)</div><div class="line">  if (_img.width &gt; cv.width) imgScale = cv.width / img.width</div><div class="line">  cv.setBackgroundImage(_img, cv.renderAll.bind(cv), &#123;</div><div class="line">    left: 0,</div><div class="line">    top: 0,</div><div class="line">    scaleX: imgScale,</div><div class="line">    scaleY: imgScale,</div><div class="line">    originX: &apos;left&apos;,</div><div class="line">    originY: &apos;top&apos;</div><div class="line">  &#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>两种方式任选其一，通过fabric图片对象的方式加载易于以后扩展功能（例如背景图片位置的移动）</li>
-<li>这里的 <strong>imgScale</strong> 的作用是为终极目标的第3点服务的，目的是将原尺寸的图片按照给定像素的宽度比例显示在屏幕中（避免横向滚动条），且该缩放比例imgScale也是将切图框映射到原尺寸图片画布的重要数据</li>
-</ul>
-<h4 id="2-鼠标拖动生成切图框"><a class="header-anchor" href="#2-鼠标拖动生成切图框"></a>2. 鼠标拖动生成切图框</h4>
-<ul>
-<li>
-<h5 id="解决当拖动时fabric对象也会被拖动"><a class="header-anchor" href="#解决当拖动时fabric对象也会被拖动"></a>解决当拖动时fabric对象也会被拖动</h5>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">// 禁止对象被选中</div><div class="line">fabric.Object.prototype.selectable = false</div><div class="line">// 禁止对象被放大、缩小、旋转、移动</div><div class="line">fabric.Object.prototype.lockMovementX = true</div><div class="line">fabric.Object.prototype.lockMovementY = true</div><div class="line">fabric.Object.prototype.lockScalingX  = true</div><div class="line">fabric.Object.prototype.lockScalingY  = true</div><div class="line">fabric.Object.prototype.lockRotation  = true</div></pre></td></tr></table></figure>
-<ul>
-<li>
-<h5 id="通过监听鼠标行为作切图框"><a class="header-anchor" href="#通过监听鼠标行为作切图框"></a>通过监听鼠标行为作切图框</h5>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">cv.on(&apos;mouse:down&apos;, function (options) &#123;</div><div class="line">	// 设置变量记录起始位置的坐标</div><div class="line">	//options.e.layerX</div><div class="line">	//options.e.layerY</div><div class="line">&#125;)</div><div class="line">cv.on(&apos;mouse:up&apos;, function (options) &#123;</div><div class="line">	// 设置变量记录结束位置的坐标</div><div class="line">	//options.e.layerX</div><div class="line">	//options.e.layerY</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
-<ul>
-<li>
-<p>fabric提供了很多监听的方式，<a href="http://fabricjs.com/events" target="_blank" rel="external">查看更多</a></p>
-</li>
-<li>
-<p>值得一提的是当使用fabric.js时，options.e.layerX的坐标在chrome和Firefox上是相同的，而使用原生canvas是不同的，有兴趣的可以去试试</p>
-</li>
-<li>
-<p>将切出来的图片通过ajax上传至服务器</p>
-</li>
-</ul>
-<ol>
-<li>通过getImageData()从canvas得到的是base64编码</li>
-<li>要通过ajax将图片上传至服务器需要将base64转为blob对象</li>
-</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo a2enmod rewrite</div></pre></td></tr></table></figure>
+<h5 id="把-directory-var-www-里面的-allowoverride-none-改为-allowoverride-all"><a class="header-anchor" href="#把-directory-var-www-里面的-allowoverride-none-改为-allowoverride-all"></a>把&lt;Directory /var/www/&gt;里面的 AllowOverride None 改为 AllowOverride All</h5>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vim /etc/apache2/apache2.conf // 把&lt;Directory /var/www/&gt;里面的 AllowOverride None 改为 AllowOverride All</div></pre></td></tr></table></figure>
+<p>此时在wordpress根目录中会有 .htaccess文件，之后修改为 RewriteEngine On</p>
+<p>此时就完成配置了</p>
+<p>其中我遇到了坑，第一次a2enmod后，照着网上的方法所有的都配置好了，但是还是404，折腾无果加上天色已晚就睡了，第二天又在网上搜索方法，发现还是前一天的方法还靠谱点（也就是如上的方法），就照着又试了一遍，最终竟然成功了。。。</p>
+<p>照我的理解，应该是要先将apache2.conf中的AllowOverride改为All，之后再a2enmod，然后restart apache2，应该就可以了</p>
 
     
 
@@ -574,21 +521,13 @@
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
-        <a href="/2017/09/06/cj79136ow0003rfg0iy8weqjo/" id="post_nav-newer" class="prev-content">
-            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
-                <i class="material-icons">arrow_back</i>
-            </button>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            新篇
-        </a>
-    
 
     <!-- Section Spacer -->
     <div class="section-spacer"></div>
 
     <!-- Next Nav -->
     
-        <a href="/2017/09/05/cj79136or0001rfg0cxlk418t/" id="post_nav-older" class="next-content">
+        <a href="/2017/09/06/cj7fx863d00009qg0f4fj6d6b/" id="post_nav-older" class="next-content">
             旧篇
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
@@ -680,7 +619,7 @@
             </a>
             <ul class="dropdown-menu">
             <li>
-                <a class="sidebar_archives-link" href="/archives/2017/09/">九月 2017<span class="sidebar_archives-count">6</span></a>
+                <a class="sidebar_archives-link" href="/archives/2017/09/">九月 2017<span class="sidebar_archives-count">5</span></a>
             </ul>
         </li>
         
