@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://fitzz.cn/"/>
-  <updated>2017-09-06T12:56:07.000Z</updated>
+  <updated>2017-09-29T09:09:46.000Z</updated>
   <id>http://fitzz.cn/</id>
   
   <author>
@@ -16,9 +16,88 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>fabric.js的简单上手及基于fabric.js的canvas切图工具：1、实现拖拽切图</title>
+    <link href="http://fitzz.cn/2017/09/29/cj85o9qdu00020fg050dgusgc/"/>
+    <id>http://fitzz.cn/2017/09/29/cj85o9qdu00020fg050dgusgc/</id>
+    <published>2017-09-29T07:33:06.000Z</published>
+    <updated>2017-09-29T09:09:46.000Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="二-实现拖拽切图"><a class="header-anchor" href="#二-实现拖拽切图"></a>二、实现拖拽切图</h3>
+<blockquote>
+<h4 id="目标：将原尺寸图片按照屏幕尺寸显示-并按原图质量切图"><a class="header-anchor" href="#目标：将原尺寸图片按照屏幕尺寸显示-并按原图质量切图"></a>目标：将原尺寸图片按照屏幕尺寸显示，并按原图质量切图</h4>
+</blockquote>
+<ol>
+<li>
+<h5 id="处理原图的缩放比例及切图框的比例映射到原图"><a class="header-anchor" href="#处理原图的缩放比例及切图框的比例映射到原图"></a>处理原图的缩放比例及切图框的比例映射到原图</h5>
+<ol>
+<li>为适应屏幕比例，避免图片太大产生横向滚动条，将canvas尺寸定义为16:9固定尺寸</li>
+</ol>
+ <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">"cv"</span> <span class="attr">width</span>=<span class="string">"1080"</span> <span class="attr">height</span>=<span class="string">"1920"</span> <span class="attr">style</span>=<span class="string">"border: 1px solid black;"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></div></pre></td></tr></table></figure>
+<ol start="2">
+<li>
+<p>将图片按照比例画在canvas上</p>
+<ol>
+<li>定义比例并初始化</li>
+</ol>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> imgScale = <span class="number">1</span></div></pre></td></tr></table></figure>
+<ol start="2">
+<li>根据宽度缩放图片并作图</li>
+</ol>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> img = <span class="keyword">new</span> Image()</div><div class="line">img.src = currentImg <span class="comment">//your image path</span></div><div class="line">img.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">let</span> _img = <span class="keyword">new</span> fabric.Image(img)</div><div class="line">  <span class="keyword">if</span> (_img.width &gt; cv.width) imgScale = cv.width / img.width <span class="comment">// 获得缩放比例</span></div><div class="line">  cv.setBackgroundImage(_img, cv.renderAll.bind(cv), &#123;</div><div class="line">    left: <span class="number">0</span>,</div><div class="line">    top: <span class="number">0</span>,</div><div class="line">    scaleX: imgScale,</div><div class="line">    scaleY: imgScale,</div><div class="line">    originX: <span class="string">'left'</span>,</div><div class="line">    originY: <span class="string">'top'</span></div><div class="line">  &#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li>
+<p>在‘虚拟’canvas上按照原图作图</p>
+</li>
+</ol>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> fullImgCv = <span class="built_in">document</span>.createElement(<span class="string">'canvas'</span>)</div><div class="line"><span class="keyword">var</span> fullImgCtx = fullImgCv.getContext(<span class="string">'2d'</span>)</div><div class="line"><span class="keyword">var</span> fullImg = <span class="keyword">new</span> Image()</div><div class="line">  fullImg.src = currentImg <span class="comment">//your image path</span></div><div class="line">  fullImg.crossOrigin = <span class="string">"Anonymous"</span> </div><div class="line">  fullImg.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    fullImgCv.width = fullImg.width</div><div class="line">    fullImgCv.height = fullImg.height</div><div class="line">    fullImgCtx.drawImage(fullImg, <span class="number">0</span>, <span class="number">0</span>, fullImg.width, fullImg.height)</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+<ol start="4">
+<li>
+<p>根据鼠标拖拽画出切图框</p>
+<ol>
+<li>监听并记录开始坐标</li>
+</ol>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> beginX = <span class="number">0</span>, beginY = <span class="number">0</span></div><div class="line">cv.on(<span class="string">'mouse:down'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">options</span>) </span>&#123;</div><div class="line">    $scope.beginX = options.e.layerX</div><div class="line">    $scope.beginY = options.e.layerY</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<ol start="2">
+<li>监听记录结束坐标并画框</li>
+</ol>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> endX = <span class="number">0</span>, endY = <span class="number">0</span></div><div class="line">cv.on(<span class="string">'mouse:up'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">options</span>) </span>&#123;</div><div class="line">  endX = options.e.layerX</div><div class="line">  endY = options.e.layerY</div><div class="line">  <span class="keyword">let</span> rect = <span class="keyword">new</span> fabric.Rect(&#123;</div><div class="line">    left: beginX,</div><div class="line">    top: beginY,</div><div class="line">    fill: <span class="string">'rgba(255,255,255,0)'</span>,</div><div class="line">    stroke: clipStrokeColor,</div><div class="line">    strokeWidth: <span class="number">2</span>,</div><div class="line">    width: endX - beginX,</div><div class="line">    height: endY - beginY</div><div class="line">  &#125;)</div><div class="line">  cv.add(rect)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li>
+<p>根据比例映射到原图并切除所选区域</p>
+</li>
+</ol>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> dataImg = fullImgCtx.getImageData(x1 / imgScale, y1 / imgScale, (x2 - x1) / imgScale, (y2 - y1) / imgScale)</div><div class="line">    temCv.width = (x2 - x1) / imgScale</div><div class="line">    temCv.height = (y2 - y1) / imgScale</div><div class="line">    asCv.width = temCv.width</div><div class="line">    asCv.height = temCv.height</div><div class="line">    temCtx.putImageData(dataImg, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, temCv.width, temCv.height)</div><div class="line">    <span class="keyword">let</span> temImg = temCv.toDataURL(<span class="string">'image/png'</span>)</div></pre></td></tr></table></figure>
+<p>生成的temImg为切图框对应的原图的base64编码</p>
+</li>
+<li>
+<h5 id="将base64编码转blob对象上传至服务器"><a class="header-anchor" href="#将base64编码转blob对象上传至服务器"></a>将base64编码转blob对象上传至服务器</h5>
+<ol>
+<li>base64转blob对象</li>
+</ol>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">dataURItoBlob</span>(<span class="params">dataURI</span>) </span>&#123;</div><div class="line">  <span class="keyword">let</span> byteString = atob(dataURI.split(<span class="string">','</span>)[<span class="number">1</span>])</div><div class="line">  <span class="keyword">let</span> mimeString = dataURI.split(<span class="string">','</span>)[<span class="number">0</span>].split(<span class="string">':'</span>)[<span class="number">1</span>].split(<span class="string">';'</span>)[<span class="number">0</span>]</div><div class="line">  <span class="keyword">let</span> ab = <span class="keyword">new</span> <span class="built_in">ArrayBuffer</span>(byteString.length)</div><div class="line">  <span class="keyword">let</span> ia = <span class="keyword">new</span> <span class="built_in">Uint8Array</span>(ab)</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; byteString.length; i++) &#123;</div><div class="line">    ia[i] = byteString.charCodeAt(i)</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> <span class="keyword">new</span> Blob([ab], &#123;<span class="attr">type</span>: mimeString&#125;)        </div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<ol start="2">
+<li>angular1.5中，使用upload控件上传blob对象</li>
+</ol>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">$upload.upload(&#123;</div><div class="line">    url:<span class="string">"rest/fileServer/uploadQuestionImg"</span>,</div><div class="line">    method : <span class="string">"POST"</span>,</div><div class="line">    file   : $scope.questionImg.blob</div><div class="line">&#125;).progress(<span class="function"><span class="keyword">function</span>(<span class="params">evt</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(evt);</div><div class="line">&#125;).success(<span class="function"><span class="keyword">function</span>(<span class="params">data, status, headers, config</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (data.success) &#123;  </div><div class="line">      $scope.questionImg.path = data.message                    </div><div class="line">      <span class="keyword">delete</span> $scope.questionImg.blob</div><div class="line">      resolve(data.success)</div><div class="line">    &#125;</div><div class="line">&#125;).error(<span class="function"><span class="keyword">function</span>(<span class="params">error</span>) </span>&#123;</div><div class="line">    $scope.$emit(<span class="string">"loaded"</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;二-实现拖拽切图&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#二-实现拖拽切图&quot;&gt;&lt;/a&gt;二、实现拖拽切图&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;h4 id=&quot;目标：将原尺寸图片按照屏幕尺寸显示-并按原图质量切图&quot;&gt;&lt;a class=&quot;hea
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>关于wordpress设置固定链接后文章出现404的解决办法</title>
-    <link href="http://fitzz.cn/2017/09/06/cj7fx863p00049qg036syvcz7/"/>
-    <id>http://fitzz.cn/2017/09/06/cj7fx863p00049qg036syvcz7/</id>
+    <link href="http://fitzz.cn/2017/09/06/cj85o9qe100050fg0hgpxrul6/"/>
+    <id>http://fitzz.cn/2017/09/06/cj85o9qe100050fg0hgpxrul6/</id>
     <published>2017-09-06T12:45:59.000Z</published>
     <updated>2017-09-06T12:56:07.000Z</updated>
     
@@ -52,8 +131,8 @@
   
   <entry>
     <title>Mac osX下brew、node、npm的安装以及外接显示器发虚的配置</title>
-    <link href="http://fitzz.cn/2017/09/06/cj7fx863d00009qg0f4fj6d6b/"/>
-    <id>http://fitzz.cn/2017/09/06/cj7fx863d00009qg0f4fj6d6b/</id>
+    <link href="http://fitzz.cn/2017/09/06/cj85o9qdk00000fg0xk8aplgs/"/>
+    <id>http://fitzz.cn/2017/09/06/cj85o9qdk00000fg0xk8aplgs/</id>
     <published>2017-09-06T12:42:06.000Z</published>
     <updated>2017-09-06T12:44:40.000Z</updated>
     
@@ -111,8 +190,8 @@ III. 关闭 rootless 后就有权限拷贝文件到系统文件夹了。</p>
   
   <entry>
     <title>关于Javascript中this的指向以及一些应用</title>
-    <link href="http://fitzz.cn/2017/09/06/cj7fx863m00029qg0r5c8l7sc/"/>
-    <id>http://fitzz.cn/2017/09/06/cj7fx863m00029qg0r5c8l7sc/</id>
+    <link href="http://fitzz.cn/2017/09/06/cj85o9qe000040fg0rqzyj1zk/"/>
+    <id>http://fitzz.cn/2017/09/06/cj85o9qe000040fg0rqzyj1zk/</id>
     <published>2017-09-06T12:34:35.000Z</published>
     <updated>2017-09-06T12:37:23.000Z</updated>
     
@@ -157,8 +236,8 @@ III. 关闭 rootless 后就有权限拷贝文件到系统文件夹了。</p>
   
   <entry>
     <title>fabric.js的简单上手及基于fabric.js的canvas切图工具：1、基本使用及配置</title>
-    <link href="http://fitzz.cn/2017/09/06/cj7fx863n00039qg04vh9tep7/"/>
-    <id>http://fitzz.cn/2017/09/06/cj7fx863n00039qg04vh9tep7/</id>
+    <link href="http://fitzz.cn/2017/09/06/cj85o9qdq00010fg0abf9avex/"/>
+    <id>http://fitzz.cn/2017/09/06/cj85o9qdq00010fg0abf9avex/</id>
     <published>2017-09-06T05:49:09.000Z</published>
     <updated>2017-09-06T12:39:50.000Z</updated>
     
@@ -253,8 +332,8 @@ III. 关闭 rootless 后就有权限拷贝文件到系统文件夹了。</p>
   
   <entry>
     <title>Hello World</title>
-    <link href="http://fitzz.cn/2017/09/05/cj7fx863j00019qg06339hqcf/"/>
-    <id>http://fitzz.cn/2017/09/05/cj7fx863j00019qg06339hqcf/</id>
+    <link href="http://fitzz.cn/2017/09/05/cj85o9qdx00030fg03ti9q8gs/"/>
+    <id>http://fitzz.cn/2017/09/05/cj85o9qdx00030fg03ti9q8gs/</id>
     <published>2017-09-05T15:40:14.000Z</published>
     <updated>2017-09-05T15:40:14.000Z</updated>
     

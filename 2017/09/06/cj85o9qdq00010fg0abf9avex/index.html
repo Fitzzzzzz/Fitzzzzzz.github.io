@@ -12,6 +12,8 @@
     
     <title>
         
+            fabric.js的简单上手及基于fabric.js的canvas切图工具：1、基本使用及配置 | 
+        
         FitzzBlog
     </title>
 
@@ -63,15 +65,18 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://fitzz.cn">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="FitzzBlog">
+    <meta property="og:title" content="fabric.js的简单上手及基于fabric.js的canvas切图工具：1、基本使用及配置 | FitzzBlog">
     <meta property="og:image" content="/img/favicon.png" />
     <meta property="og:description" content="">
     
 
     
+        <meta property="article:published_time" content="9月 06, 2017" />
+        <meta property="article:modified_time" content="9月 06, 2017" />
+    
 
     <!-- The Twitter Card protocol -->
-    <meta name="twitter:title" content="FitzzBlog">
+    <meta name="twitter:title" content="fabric.js的简单上手及基于fabric.js的canvas切图工具：1、基本使用及配置 | FitzzBlog">
     <meta name="twitter:description" content="">
     <meta name="twitter:image" content="/img/favicon.png">
     <meta name="twitter:card" content="summary_large_image" />
@@ -79,35 +84,43 @@
 
     <!-- Add canonical link for SEO -->
     
-        <link rel="canonical" href="http://fitzz.cn" />
+        <link rel="canonical" href="http://fitzz.cn/2017/09/06/cj85o9qdq00010fg0abf9avex/index.html" />
     
 
     <!-- Structured-data for SEO -->
     
         
+
+
 <script type="application/ld+json">
 {
-    "@context": "http://schema.org",
-    "@type": "Website",
+    "@context": "https://schema.org",
+    "@type": "Article",
     "publisher": {
         "@type": "Organization",
         "name": "FitzzBlog",
         "logo": "/img/favicon.png"
     },
-    "url": "http://fitzz.cn/index.html",
-    "image": {
-        "@type": "ImageObject",
-        "url": "/img/favicon.png"
+    "author": {
+        "@type": "Person",
+        "name": "Fitzz Wang",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/favicon.png"
+        },
+        "description": "Hi, nice to meet you"
     },
+    "headline": "fabric.js的简单上手及基于fabric.js的canvas切图工具：1、基本使用及配置",
+    "url": "http://fitzz.cn/2017/09/06/cj85o9qdq00010fg0abf9avex/index.html",
+    "datePublished": "9月 06, 2017",
+    "dateModified": "9月 06, 2017",
+    "description": "",
     "mainEntityOfPage": {
         "@type": "WebPage",
         "@id": "http://fitzz.cn"
-    },
-    "description": ""
+    }
 }
 </script>
-
-
 
 
     
@@ -291,523 +304,303 @@
                         </button>
                     
 
-                    <!-- Index Module -->
-<div class="material-index mdl-grid">
+                    <!-- Post TOC -->
+
     
-        <!-- Paradox Header -->
-        <!-- Daily pic -->
-<div class="mdl-card mdl-shadow--2dp daily-pic mdl-cell mdl-cell--8-col index-top-block">
-
-    <!-- Pic & Slogan -->
-    <div class="mdl-card__media mdl-color-text--grey-50" style="background-image:url(/img/daily_pic.png)">
-        <p class="index-top-block-slogan"><a href="#">
-        
-            
-                Hi, nice to meet you
-            
-        
-        </a></p>
-    </div>
-
-    <!-- Avatar & Name -->
-    <div class="mdl-card__supporting-text meta mdl-color-text--grey-600">
-        <!-- Author Avatar -->
-        <div id="author-avatar">
-            <img src="/img/avatar.png" width="32px" height="32px" alt="avatar">
-        </div>
-        <div>
-            <strong>Fitzz Wang</strong>
-        </div>
-    </div>
-</div>
-
-        <!-- Blog info -->
-<div class="mdl-card mdl-shadow--2dp something-else mdl-cell mdl-cell--8-col mdl-cell--4-col-desktop index-top-block">
-
-    <!-- Search -->
-    
-    <!-- Google -->
-    <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable" method="post" action="">
-        <label id="search-label" class="mdl-button mdl-js-ripple-effect mdl-js-button mdl-button--fab mdl-color--accent mdl-shadow--4dp" for="search">
-            <i class="material-icons mdl-color-text--white" role="presentation">search</i>
-        </label>
-
-        <form autocomplete="off" id="search-form" method="get" action="//google.com/search" accept-charset="UTF-8" class="mdl-textfield__expandable-holder" target="_blank">
-            <input class="mdl-textfield__input search-input" type="search" name="q" id="search" placeholder="">
-            <label id="search-form-label" class="mdl-textfield__label" for="search"></label>
-
-            <input type="hidden" name="sitesearch" value="http://fitzz.cn">
-        </form>
-    </div>
-
-
-
-
-
-
-
-    <!-- LOGO -->
-    <div class="something-else-logo mdl-color--white mdl-color-text--grey-600">
-        <a href="#" target="_blank">
-            <img src="/img/logo.png" alt="logo" />
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
         </a>
     </div>
+    -->
 
-    <!-- Infomation -->
-    <div class="mdl-card__supporting-text meta meta--fill mdl-color-text--grey-600">
-        <!-- Blog Title -->
-        <div>
-            <strong>FitzzBlog</strong>
-        </div>
-        <div class="section-spacer"></div>
-
-        <!-- Pages -->
-        <button id="show-pages-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
-            <i class="material-icons" role="presentation">view_carousel</i>
-            <span class="visuallyhidden">Pages</span>
-        </button>
-        <ul class="mdl-menu mdl-js-menu mdl-menu--bottom-right" for="show-pages-button">
-            
-        </ul>
-
-        <!-- Menu -->
-        <button id="menubtn" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
-            <i class="material-icons" role="presentation">more_vert</i>
-            <span class="visuallyhidden">show menu</span>
-        </button>
-        <ul class="mdl-menu mdl-js-menu mdl-menu--bottom-right" for="menubtn">
-            
-
-            
-
-            
-                <a class="index_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=FitzzBlog&url=http://fitzz.cn/&pic=&searchPic=false&style=simple" target="_blank">
-                    <li class="mdl-menu__item mdl-js-ripple-effect">
-                        分享到微博
-                    </li>
-                </a>
-            
-
-            
-                <a class="index_share-link" href="https://twitter.com/intent/tweet?text=FitzzBlog&url=http://fitzz.cn/&via=Fitzz Wang" target="_blank">
-                    <li class="mdl-menu__item mdl-js-ripple-effect">
-                        分享到 Twitter
-                    </li>
-                </a>
-            
-
-            
-                <a class="index_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://fitzz.cn/index.html" target="_blank">
-                    <li class="mdl-menu__item mdl-js-ripple-effect">
-                        分享到 Facebook
-                    </li>
-                </a>
-            
-
-            
-                <a class="index_share-link" href="https://plus.google.com/share?url=http://fitzz.cn/" target="_blank">
-                    <li class="mdl-menu__item mdl-js-ripple-effect">
-                        分享到 Google+
-                    </li>
-                </a>
-            
-
-            
-
-            
-
-            
-        </ul>
-    </div>
-</div>
+    <!-- Left aligned menu below button -->
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
 
     
-    <div class="locate-thumbnail-symbol"></div>
-
-    <!-- Pin on top -->
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#简介"><span class="post-toc-number">1.</span> <span class="post-toc-text">简介</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#为什么选择fabric-js"><span class="post-toc-number">2.</span> <span class="post-toc-text">为什么选择fabric.js</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#简单上手"><span class="post-toc-number">3.</span> <span class="post-toc-text">简单上手</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#终极目标："><span class="post-toc-number">3.1.</span> <span class="post-toc-text">终极目标：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-加载图片"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">1. 加载图片</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#设置一个不可见的canvas并将原尺寸图片绘制上"><span class="post-toc-number">3.2.1.</span> <span class="post-toc-text">设置一个不可见的canvas并将原尺寸图片绘制上</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#加载图片至fabric画布"><span class="post-toc-number">3.2.2.</span> <span class="post-toc-text">加载图片至fabric画布</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-鼠标拖动生成切图框"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">2. 鼠标拖动生成切图框</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#解决当拖动时fabric对象也会被拖动"><span class="post-toc-number">3.3.1.</span> <span class="post-toc-text">解决当拖动时fabric对象也会被拖动</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#通过监听鼠标行为作切图框"><span class="post-toc-number">3.3.2.</span> <span class="post-toc-text">通过监听鼠标行为作切图框</span></a></li></ol></li></ol></li></ol>
+        <!--
+        <li class="mdl-menu__item">
+            Some Action
+        </li>
+        -->
+    </ul>
     
 
-    <!-- Normal Post -->
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
     
         
             <!-- Random Thumbnail -->
             <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
+            <script type="text/ls-javascript" id="post-thumbnail-script">
+    var randomNum = Math.floor(Math.random() * 19 + 1);
 
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/09/29/cj85o9qdu00020fg050dgusgc/">fabric.js的简单上手及基于fabric.js的canvas切图工具：1、实现拖拽切图</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            二、实现拖拽切图...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/09/29/cj85o9qdu00020fg050dgusgc/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="Fitzz Wang's avatar">
-            </div>
-            <div>
-                <strong>Fitzz Wang</strong>
-                <span>9月 29, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                
-            </span>
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/09/06/cj85o9qe100050fg0hgpxrul6/">关于wordpress设置固定链接后文章出现404的解决办法</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            
-首先说明一下环境：ubuntu16.04，apache2，php7
-
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/09/06/cj85o9qe100050fg0hgpxrul6/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="Fitzz Wang's avatar">
-            </div>
-            <div>
-                <strong>Fitzz Wang</strong>
-                <span>9月 06, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                
-            </span>
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/09/06/cj85o9qdk00000fg0xk8aplgs/">Mac osX下brew、node、npm的安装以及外接显示器发虚的配置</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            针对开发者的osX环境搭建
-新买的mac趁着兴奋劲使劲折腾
-
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/09/06/cj85o9qdk00000fg0xk8aplgs/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="Fitzz Wang's avatar">
-            </div>
-            <div>
-                <strong>Fitzz Wang</strong>
-                <span>9月 06, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                
-            </span>
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/09/06/cj85o9qe000040fg0rqzyj1zk/">关于Javascript中this的指向以及一些应用</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/09/06/cj85o9qe000040fg0rqzyj1zk/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="Fitzz Wang's avatar">
-            </div>
-            <div>
-                <strong>Fitzz Wang</strong>
-                <span>9月 06, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                
-            </span>
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/09/06/cj85o9qdq00010fg0abf9avex/">fabric.js的简单上手及基于fabric.js的canvas切图工具：1、基本使用及配置</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            参考链接 
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/09/06/cj85o9qdq00010fg0abf9avex/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="Fitzz Wang's avatar">
-            </div>
-            <div>
-                <strong>Fitzz Wang</strong>
-                <span>9月 06, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                
-            </span>
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/09/05/cj85o9qdx00030fg03ti9q8gs/">Hello World</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            Welcome to Hexo
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/09/05/cj85o9qdx00030fg03ti9q8gs/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="Fitzz Wang's avatar">
-            </div>
-            <div>
-                <strong>Fitzz Wang</strong>
-                <span>9月 05, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                
-            </span>
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-
-    
-
-    
-        <script type="text/ls-javascript" id="thumbnail-script">
-    var randomNum;
-
-    var locatePost = $('.locate-thumbnail-symbol').next();
-    for(var i = 0; i < 10; i++) {
-        randomNum = Math.floor(Math.random() * 19 + 1);
-
-        locatePost.children('.post_thumbnail-random').attr('id', 'random_thumbnail-'+randomNum);
-        locatePost.children('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
     $('.post_thumbnail-random').addClass('lazy');
-
-        locatePost = locatePost.next();
-    }
 </script>
 
+        
+    
+            <p class="article-headline-p">
+                fabric.js的简单上手及基于fabric.js的canvas切图工具：1、基本使用及配置
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>Fitzz Wang</strong>
+        <span>9月 06, 2017</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=fabric.js的简单上手及基于fabric.js的canvas切图工具：1、基本使用及配置&url=http://fitzz.cn/2017/09/06/cj85o9qdq00010fg0abf9avex/index.html&pic=&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=fabric.js的简单上手及基于fabric.js的canvas切图工具：1、基本使用及配置&url=http://fitzz.cn/2017/09/06/cj85o9qdq00010fg0abf9avex/index.html&via=Fitzz Wang" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://fitzz.cn/2017/09/06/cj85o9qdq00010fg0abf9avex/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://fitzz.cn/2017/09/06/cj85o9qdq00010fg0abf9avex/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <p><em>参考链接 <a href="https://segmentfault.com/a/1190000004864237" target="_blank" rel="external">Fabric.js 简单介绍和使用</a></em></p>
+<hr>
+<h3 id="简介"><a class="header-anchor" href="#简介"></a>简介</h3>
+<blockquote>
+<p>Fabric.js是一个可以简化canvas程序编写的库。 Fabric.js为canvas提供所缺少的对象模型, svg parser, 交互和一整套其他不可或缺的工具。基于MIT协议开源，在github上有许多人贡献代码。</p>
+</blockquote>
+<h3 id="为什么选择fabric-js"><a class="header-anchor" href="#为什么选择fabric-js"></a>为什么选择fabric.js</h3>
+<ul>
+<li>手上的项目必须使用canvas</li>
+<li>原生的canvas API不够友好</li>
+<li>用fabric.js实现切图用户体验更好</li>
+<li>为项目以后的迭代留下扩展的余地</li>
+</ul>
+<hr>
+<h3 id="简单上手"><a class="header-anchor" href="#简单上手"></a>简单上手</h3>
+<blockquote>
+<p>请参考文章开头的参考链接</p>
+</blockquote>
+<p>这里主要介绍一下为了实现以下目标所需要配置的东西</p>
+<h4 id="终极目标："><a class="header-anchor" href="#终极目标："></a>终极目标：</h4>
+<blockquote>
+<ol>
+<li>加载图片</li>
+<li>鼠标拖动生成切图框</li>
+<li>点击切图后按照原图比例切出图片</li>
+<li>将切出来的图片通过ajax上传至服务器</li>
+</ol>
+</blockquote>
+<h4 id="1-加载图片"><a class="header-anchor" href="#1-加载图片"></a>1. 加载图片</h4>
+<ul>
+<li>
+<h5 id="设置一个不可见的canvas并将原尺寸图片绘制上"><a class="header-anchor" href="#设置一个不可见的canvas并将原尺寸图片绘制上"></a>设置一个不可见的canvas并将原尺寸图片绘制上</h5>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">let fullImgCv = document.createElement(&apos;canvas&apos;)</div><div class="line">let fullImgCtx = fullImgCv.getContext(&apos;2d&apos;)</div><div class="line">let fullImg = new Image()</div><div class="line">fullImg.src = &apos;***&apos;//your path</div><div class="line">fullImg.crossOrigin = &quot;Anonymous&quot;</div><div class="line">fullImg.onload = function () &#123;</div><div class="line">    fullImgCv.width = fullImg.width</div><div class="line">    fullImgCv.height = fullImg.height</div><div class="line">    fullImgCtx.drawImage(fullImg, 0, 0, fullImg.width, fullImg.height)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>
+<h5 id="加载图片至fabric画布"><a class="header-anchor" href="#加载图片至fabric画布"></a>加载图片至fabric画布</h5>
+</li>
+</ul>
+<p>通过背景图片的方式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">let cv = new fabric.Canvas(&apos;cv&apos;)</div><div class="line">let imgScale = 1</div><div class="line">fabric.Image.fromURL(currentImg, function (img) &#123;</div><div class="line">	if (img.width &gt; cv.width) imgScale = cv.width / img.width</div><div class="line">	    img.set(&#123;</div><div class="line">            left: 0,</div><div class="line">            top: 0,</div><div class="line">            scaleX: imgScale,</div><div class="line">            scaleY: imgScale,</div><div class="line">            originX: &apos;left&apos;,</div><div class="line">            originY: &apos;top&apos;</div><div class="line">        &#125;)</div><div class="line">		cv.add(img)</div><div class="line">	&#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>通过fabric图片对象的方式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">let img = new Image()</div><div class="line">img.src = &apos;***&apos;//your path</div><div class="line">img.onload = function () &#123;</div><div class="line">  let _img = new fabric.Image(img)</div><div class="line">  if (_img.width &gt; cv.width) imgScale = cv.width / img.width</div><div class="line">  cv.setBackgroundImage(_img, cv.renderAll.bind(cv), &#123;</div><div class="line">    left: 0,</div><div class="line">    top: 0,</div><div class="line">    scaleX: imgScale,</div><div class="line">    scaleY: imgScale,</div><div class="line">    originX: &apos;left&apos;,</div><div class="line">    originY: &apos;top&apos;</div><div class="line">  &#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>两种方式任选其一，通过fabric图片对象的方式加载易于以后扩展功能（例如背景图片位置的移动）</li>
+<li>这里的 <strong>imgScale</strong> 的作用是为终极目标的第3点服务的，目的是将原尺寸的图片按照给定像素的宽度比例显示在屏幕中（避免横向滚动条），且该缩放比例imgScale也是将切图框映射到原尺寸图片画布的重要数据</li>
+</ul>
+<h4 id="2-鼠标拖动生成切图框"><a class="header-anchor" href="#2-鼠标拖动生成切图框"></a>2. 鼠标拖动生成切图框</h4>
+<ul>
+<li>
+<h5 id="解决当拖动时fabric对象也会被拖动"><a class="header-anchor" href="#解决当拖动时fabric对象也会被拖动"></a>解决当拖动时fabric对象也会被拖动</h5>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">// 禁止对象被选中</div><div class="line">fabric.Object.prototype.selectable = false</div><div class="line">// 禁止对象被放大、缩小、旋转、移动</div><div class="line">fabric.Object.prototype.lockMovementX = true</div><div class="line">fabric.Object.prototype.lockMovementY = true</div><div class="line">fabric.Object.prototype.lockScalingX  = true</div><div class="line">fabric.Object.prototype.lockScalingY  = true</div><div class="line">fabric.Object.prototype.lockRotation  = true</div></pre></td></tr></table></figure>
+<ul>
+<li>
+<h5 id="通过监听鼠标行为作切图框"><a class="header-anchor" href="#通过监听鼠标行为作切图框"></a>通过监听鼠标行为作切图框</h5>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">cv.on(&apos;mouse:down&apos;, function (options) &#123;</div><div class="line">	// 设置变量记录起始位置的坐标</div><div class="line">	//options.e.layerX</div><div class="line">	//options.e.layerY</div><div class="line">&#125;)</div><div class="line">cv.on(&apos;mouse:up&apos;, function (options) &#123;</div><div class="line">	// 设置变量记录结束位置的坐标</div><div class="line">	//options.e.layerX</div><div class="line">	//options.e.layerY</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<ul>
+<li>
+<p>fabric提供了很多监听的方式，<a href="http://fabricjs.com/events" target="_blank" rel="external">查看更多</a></p>
+</li>
+<li>
+<p>值得一提的是当使用fabric.js时，options.e.layerX的坐标在chrome和Firefox上是相同的，而使用原生canvas是不同的，有兴趣的可以去试试</p>
+</li>
+<li>
+<p>将切出来的图片通过ajax上传至服务器</p>
+</li>
+</ul>
+<ol>
+<li>通过getImageData()从canvas得到的是base64编码</li>
+<li>要通过ajax将图片上传至服务器需要将base64转为blob对象</li>
+</ol>
+
+    
+
     
 </div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2017/09/06/cj85o9qe000040fg0rqzyj1zk/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2017/09/05/cj85o9qdx00030fg03ti9q8gs/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
 
 
                     
@@ -1083,12 +876,6 @@ It will not impact the appearance and can give developers a lot of support :)
 
 
 
-
-    <!-- Swiftye -->
-    
-
-    <!-- Local Search-->
-    
 
 
 <!-- UC Browser Compatible -->
